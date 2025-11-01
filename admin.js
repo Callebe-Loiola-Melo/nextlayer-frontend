@@ -1,5 +1,5 @@
-// URL da nossa API (rodando em localhost:3000)
-const API_URL = 'http://localhost:3000';
+// URL da nossa API 
+const API_URL = 'http://nextlayer-backend-production.up.railway.app';
 
 // --- ELEMENTOS DO DOM ---
 const projetoForm = document.getElementById('projeto-form');

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const API_URL = 'http://localhost:3000';
+    const API_URL = 'http://nextlayer-backend-production.up.railway.app';
     const recentesGrid = document.getElementById('recentes-grid'); 
 
     async function carregarProjetosRecentes() {
