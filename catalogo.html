@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>nextlayer — Catálogo de modelos</title>
+  <meta name="description" content="Modelos prontos: landing pages, sites institucionais e lojas — escolha e personalize." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/icon.png" />
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html" aria-label="nextlayer — Início">
+          <img src="images/logo retangular.png" alt="nextlayer — logo" />
+        </a>
+      </div>
+
+      <nav role="navigation" aria-label="Menu principal">
+        <button class="mobile-nav-trigger" aria-expanded="false" aria-controls="nav-list" title="Abrir menu">☰</button>
+        <ul id="nav-list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="criacao.html">Solicitar Orçamento</a></li>
+          <li><a id="nav-contato" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-content animate-entry">
+    <h1>Catálogo de modelos</h1>
+    <p class="lead">Escolha um modelo e solicite personalização. Todos são responsivos e otimizados.</p>
+
+    <div class="servicos-grid" id="catalogo-grid">
+      <p>Carregando projetos do nosso portfólio...</p>
+    </div>
+  </main>
+  
+  <div id="contactModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeContactModal" aria-label="Fechar janela de contato">×</button>
+      <h3>Como podemos ajudar?</h3>
+      <p>Escolha a melhor forma de falar com a nossa equipe.</p>
+      <div class="modal-actions">
+        <a id="contactModalEmailBtn" class="cta-button modal-action-btn" href="mailto:nextlayerempresarial@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 3.38V19H4V6.38l8 5.15 8-5.15zM4.6 5L12 9.77 19.4 5H4.6z"/></svg>
+          <span>Enviar e-mail</span>
+        </a>
+        <a class="cta-button modal-action-btn" href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20falar%20com%20a%20nextlayer" target="_blank" style="background: #25D366;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.626-2.957 6.584-6.591 6.584zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.098-.448.098-.133.196-.514.646-.629.774-.114.128-.232.145-.448.049-.214-.098-.921-.332-1.751-1.071-.646-.579-1.08-1.29-1.218-1.506-.137-.215-.01-.331.093-.432.098-.099.221-.242.329-.36a.417.417 0 0 0 .093-.314c0-.131-.448-1.07-.612-1.442-.164-.372-.33-.314-.448-.314a.885.885 0 0 0-.448.123c-.14.116-.481.464-.646.63-.164.167-.329.418-.329.851 0 .432.339.851.768 1.478.43.628.895 1.156 1.776 1.838.47.37.84.598 1.12.798.37.258.736.467 1.059.584.552.201 1.06.176 1.463.107.4-.068 1.17-.48 1.334-.949.166-.469.166-.869.117-.957-.048-.088-.197-.148-.413-.242z"/>
+          </svg>
+          <span>Enviar WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="solicitationModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeSolicitationModal" aria-label="Fechar janela">×</button>
+      <h3>Solicitar Orçamento</h3>
+      <p>Preencha os dados abaixo e enviaremos a proposta.</p>
+      
+      <div class="info-box">
+        <strong>Como funciona?</strong>
+        <p>Após o envio, seu projeto será avaliado. Em seguida, enviaremos o prazo, o que o site conterá, o contrato e todas as demais informações pelo seu meio de contato.</p>
+      </div>
+
+      <form id="form-orcamento-modal" class="form-grid" action="#" method="post" onsubmit="return false;">
+        <div class="form-group">
+          <label for="nome-modal">Nome</label>
+          <input id="nome-modal" name="nome" required placeholder="Seu nome completo" />
+        </div>
+        <div class="form-group">
+          <label for="empresa-modal">Empresa (opcional)</label>
+          <input id="empresa-modal" name="empresa" placeholder="Nome da sua empresa" />
+        </div>
+        <div class="form-group">
+          <label for="email-modal">E-mail</label>
+          <input id="email-modal" name="email" type="email" required placeholder="seu-email@dominio.com" />
+        </div>
+        <div class="form-group">
+          <label for="whatsapp-modal">Telefone (com DDD)</label>
+          <input id="whatsapp-modal" name="whatsapp" required placeholder="61999999999" />
+        </div>
+        <div class="form-group full">
+          <label for="descricao-modal">Descreva seu projeto</label>
+          <textarea id="descricao-modal" name="descricao" rows="4" required placeholder="Ex: Quero um site de landing page para..."></textarea>
+        </div>
+        
+        <div class="form-actions full">
+          <div class="form-actions-split">
+            <button type="submit" class="cta-button" id="sendBudgetModalWpp">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.626-2.957 6.584-6.591 6.584zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.098-.448.098-.133.196-.514.646-.629.774-.114.128-.232.145-.448.049-.214-.098-.921-.332-1.751-1.071-.646-.579-1.08-1.29-1.218-1.506-.137-.215-.01-.331.093-.432.098-.099.221-.242.329-.36a.417.417 0 0 0 .093-.314c0-.131-.448-1.07-.612-1.442-.164-.372-.33-.314-.448-.314a.885.885 0 0 0-.448.123c-.14.116-.481.464-.646.63-.164.167-.329.418-.329.851 0 .432.339.851.768 1.478.43.628.895 1.156 1.776 1.838.47.37.84.598 1.12.798.37.258.736.467 1.059.584.552.201 1.06.176 1.463.107.4-.068 1.17-.48 1.334-.949.166-.469.166-.869.117-.957-.048-.088-.197-.148-.413-.242z"/>
+              </svg>
+              <span>Enviar via WhatsApp</span>
+            </button>
+            <button type="submit" class="cta-outline" id="sendBudgetModalEmail">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.22a1 1 0 00.118.05l.841.42a1 1 0 00.201 0l.841-.42a1 1 0 00.118-.05L19 7.16V6a2 2 0 00-2-2H3z"></path>
+                <path d="M19 9.162l-7.841 3.92a1 1 0 01-1.118 0L2 9.162V14a2 2 0 002 2h12a2 2 0 002-2V9.162z"></path>
+              </svg>
+              <span>Enviar via E-mail</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      </div>
+  </div>
+  </main>
+
+<div id="projeto-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-content projeto-modal-content">
+    <button class="modal-close" id="close-projeto-modal" aria-label="Fechar janela">×</button>
+
+    <img id="modal-imagem" src="" alt="Imagem do projeto" />
+    <h3 id="modal-titulo">Carregando...</h3>
+    <p id="modal-descricao">Carregando...</p>
+    <button id="modal-show-more" style="display: none;">Mostrar mais</button>
+
+    <div class="modal-actions-projeto">
+      <a id="modal-btn-personalizar" class="cta-button" href="#">Personalizar</a>
+      <a id="modal-btn-demo" class="cta-outline" href="#" target="_blank">Demo</a>
+    </div>
+  </div>
+</div>
+
+
+
+ <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <img src="images/logo retangular.png" alt="nextlayer" class="footer-logo" />
+          <p class="footer-desc">Soluções digitais com foco em performance e design moderno.</p>
+        </div>
+        <div class="footer-right">
+          <h4>Privacidade</h4>
+          <ul>
+            <li><a href="politicas-de-privacidade.html">Política de Privacidade</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Siga-nos</h4>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="ano">2023</span> nextlayer. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.5;">
+          <a href="login.html" style="color: inherit; text-decoration: none;">Painel ADM</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="mobile-nav-bar" aria-label="Navegação principal móvel">
+    <a href="index.html" class="mobile-nav-link" data-page="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg>
+      <span>Início</span>
+    </a>
+    <a href="catalogo.html" class="mobile-nav-link" data-page="catalogo.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z"/></svg>
+      <span>Catálogo</span>
+    </a>
+    <a href="criacao.html" class="mobile-nav-link" data-page="criacao.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      <span>Orçamento</span>
+    </a>
+    <button class="mobile-nav-link" id="mobile-nav-contato">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+      <span>Contato</span>
+    </button>
+  </nav>
+
+  <script src="script.js"></script>
+  <script src="catalogo.js"></script> </body>
+</html>

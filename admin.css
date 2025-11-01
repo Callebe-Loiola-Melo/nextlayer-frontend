@@ -1,0 +1,210 @@
+/* Estilos para o Painel ADM (v2 - Layout de 2 Colunas) */
+
+/* 1. ESTILOS DO LOGIN.HTML (Caixa centralizada) */
+.admin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 2rem 0;
+}
+
+.admin-form {
+  background: var(--panel);
+  border: 1px solid var(--glass);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+/* A caixa de login terá 450px */
+.admin-container .admin-form {
+   max-width: 450px; 
+}
+
+.admin-logo {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.admin-form h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--blue-accent);
+}
+
+.admin-form .form-group {
+  margin-bottom: 1.5rem;
+}
+.admin-form .cta-button {
+  width: 100%;
+}
+
+.error-message {
+  color: #ff6b6b;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  display: none;
+}
+.success-message {
+  color: #2ecc71;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  display: none;
+}
+
+/* --- 2. ESTILOS DO ADMIN.HTML (Layout de 2 Colunas) --- */
+
+/* AQUI ESTÁ A MÁGICA: O layout de 2 colunas */
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colunas de tamanho igual */
+  gap: 2.5rem;
+}
+
+/* Em telas pequenas, volta a ser 1 coluna */
+@media (max-width: 900px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+  .list-container {
+    margin-top: 3rem;
+  }
+}
+
+/* O formulário de admin NÃO tem max-width (ocupa a coluna) */
+#projeto-form {
+  max-width: 100%; 
+  margin: 0; /* Remove a centralização */
+}
+
+/* Lista de projetos */
+.list-container {
+  margin-top: 0; /* Alinha com o topo do formulário */
+}
+
+.list-container h2 {
+  border-bottom: 1px solid var(--glass);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Item individual na lista de projetos */
+.projeto-item {
+  background: var(--panel);
+  border: 1px solid var(--glass);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.projeto-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.projeto-item-info {
+  flex-grow: 1;
+}
+.projeto-item-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+.projeto-item-info p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.projeto-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Botões de Ação Pequenos */
+.action-btn {
+  background: none;
+  border: 1px solid var(--glass);
+  color: var(--muted);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.edit-btn:hover {
+  border-color: var(--blue-accent);
+  color: var(--blue-accent);
+}
+.delete-btn:hover {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+/* Botão de Cancelar Edição */
+#cancel-edit-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+
+/* --- 3. ESTILOS DO BOTÃO VOLTAR (Login.html) --- */
+.admin-back-link {
+  display: block;
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.admin-back-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+@media (max-width: 720px) {
+  
+  /* Alvo: O <div class="container"> DENTRO do <header class="navbar"> 
+    Esta regra NÃO afeta o container do resto da página.
+  */
+  .navbar > .container {
+    /* 1. Tira o 'width: 92%' e o 'max-width' */
+    width: 100%;
+    max-width: 100%;
+    
+    /* 2. Adiciona um "respiro" nas laterais */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+    /* 3. Garante que a logo fique na esquerda e o botão na direita */
+    justify-content: space-between; 
+  }
+}
+/* --- CORREÇÃO FINAL: Header do Admin no Mobile --- */
+
+/* --- CORREÇÃO FINAL v3 (Com Seletor Mais Forte) --- */
+
+/* --- CORREÇÃO FINAL v4 (Opção Nuclear com !important) --- */
+
+@media (max-width: 720px) {
+
+  header.navbar > div.container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1.5rem !important; 
+    padding-right: 1.5rem !important;
+    justify-content: space-between !important;
+  }
+}
