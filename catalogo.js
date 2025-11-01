@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
         
     // 1. Definições
-    const API_URL = 'http://nextlayer-backend-production.up.railway.app';
+    const API_URL = 'https://nextlayer-backend-production.up.railway.app';
     const catalogoGrid = document.getElementById('catalogo-grid');
     
     // --- Elementos do Modal ---
