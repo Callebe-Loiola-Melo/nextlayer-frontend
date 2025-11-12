@@ -208,3 +208,259 @@
     justify-content: space-between !important;
   }
 }
+.admin-nav {
+  background: var(--panel);
+  border-bottom: 1px solid var(--glass);
+  margin-bottom: var(--section-gap);
+  position: sticky;
+  top: 93px; /* Altura da sua navbar principal */
+  z-index: 900;
+}
+
+.admin-nav .container {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.admin-nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1rem 0.5rem;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.admin-nav-link:hover {
+  color: var(--white);
+}
+
+.admin-nav-link.active {
+  color: var(--blue-accent);
+  border-bottom-color: var(--blue-accent);
+}
+
+/* Container da lista de Pedidos/Registros */
+.pedidos-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Estilo do Card de Pedido */
+.pedido-card {
+  background: var(--panel);
+  border: 1px solid var(--glass);
+  border-left: 4px solid var(--blue-accent); /* Destaque na esquerda */
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+}
+
+/* Destaque para status diferentes */
+.pedido-card[data-status="Em Produção"] {
+  border-left-color: #f39c12; /* Laranja */
+}
+.pedido-card[data-status="Finalizado"] {
+  border-left-color: #2ecc71; /* Verde */
+}
+.registro-card {
+  border-left-color: #95a5a6; /* Cinza */
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.pedido-header h3 {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+.pedido-status {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.pedido-status .status-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.pedido-status select {
+  background: var(--bg-dark);
+  color: var(--white);
+  border: 1px solid var(--glass);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.pedido-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-item {
+  font-size: 0.95rem;
+}
+.info-item strong {
+  color: var(--muted);
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  opacity: 0.7;
+}
+
+.pedido-descricao {
+  background: rgba(0,0,0,0.15);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.pedido-descricao strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+}
+.pedido-descricao p {
+  white-space: pre-wrap; /* Preserva as quebras de linha do cliente */
+  line-height: 1.7;
+  color: var(--white);
+}
+
+.registro-actions {
+  text-align: right;
+  margin-top: 1.5rem;
+}
+.admin-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-list-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto; /* Nome | Data | Status | Ações */
+  gap: 1rem;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--glass);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+
+/* Layout específico para a lista de Registros */
+.admin-list-item[data-type="registro"] {
+  grid-template-columns: 1fr auto auto; /* Nome | Detalhes | Apagar */
+}
+
+.admin-list-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.admin-list-item h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.admin-list-item .item-data {
+  font-size: 0.9rem;
+  color: var(--muted);
+  opacity: 0.7;
+}
+.admin-list-item .status-select {
+  background: var(--bg-dark);
+  color: var(--white);
+  border: 1px solid var(--glass);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+.admin-list-item .item-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* 3. Estilos para o NOVO Modal de Detalhes */
+.details-modal-content {
+  max-width: 700px;
+  text-align: left;
+  /* Animação de entrada que você pediu */
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(.2,.9,.25,1), opacity 0.3s;
+}
+.modal-overlay.active .details-modal-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.details-modal-body h3 {
+  font-size: 1.8rem;
+  color: var(--blue-accent);
+  margin-bottom: 0.5rem;
+}
+.details-modal-body .details-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--glass);
+  padding-bottom: 1.5rem;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.details-item {
+  font-size: 0.95rem;
+}
+.details-item strong {
+  color: var(--muted);
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  opacity: 0.7;
+}
+.details-item span, .details-item p {
+  color: var(--white);
+}
+/* Faz a descrição ocupar a largura toda */
+.details-item.full {
+  grid-column: 1 / -1;
+}
+.details-item p {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  background: rgba(0,0,0,0.15);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Inputs bloqueados (para a tela de Registros) */
+.details-item input[readonly], .details-item textarea[readonly] {
+  background: rgba(0,0,0,0.1) !important;
+  color: var(--muted) !important;
+  opacity: 0.7;
+  border: 1px solid transparent !important;
+}
+
+.dev-form {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--glass);
+}
+.dev-form .form-group {
+  margin-bottom: 1rem;
+}

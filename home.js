@@ -1,25 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    const API_URL = 'https://nextlayer-backend-production.up.railway.app';
+        
+    // REVERTIDO: Voltamos para o localhost
+    const API_URL = 'http://localhost:3000';
     const recentesGrid = document.getElementById('recentes-grid'); 
-
+    
     async function carregarProjetosRecentes() {
-        if (!recentesGrid) return;
+        if (!recentesGrid) {
+            console.error('Elemento #recentes-grid não encontrado.');
+            return;
+        }
 
         try {
             const response = await fetch(`${API_URL}/api/projetos/recentes`);
-            if (!response.ok) throw new Error('Falha ao carregar dados.');
-
+            if (!response.ok) {
+                throw new Error('Falha ao carregar dados do servidor.');
+            }
+            
             const projetos = await response.json();
             recentesGrid.innerHTML = '';
-            if (projetos.length === 0) return; 
+
+            if (projetos.length === 0) {
+                return; 
+            }
 
             projetos.forEach(projeto => {
                 const imageUrl = `${API_URL}/uploads/${projeto.imagem_url}`;
-
-                // --- MUDANÇA PRINCIPAL AQUI ---
-                // O <a> não vai mais para "demo_url".
-                // Ele agora aponta para o catálogo e passa o ID do projeto!
+                
                 const cardHTML = `
                     <a href="catalogo.html?projeto=${projeto.id}" style="text-decoration: none;">
                       <figure class="portfolio-card animate-entry">
@@ -28,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       </figure>
                     </a>
                 `;
-
+                
                 recentesGrid.innerHTML += cardHTML;
             });
 
@@ -38,5 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 4. Chamar a função
     carregarProjetosRecentes();
 });

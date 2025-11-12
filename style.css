@@ -1088,3 +1088,31 @@ nav a:hover, nav a:focus {
   margin-bottom: 1.5rem; /* <-- Cria o espaço antes dos botões */
 }
 
+.form-message {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+/* --- INÍCIO Estilos Modal de Sucesso --- */
+.success-modal-content {
+  max-width: 500px;
+}
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem auto;
+  background-color: #2ecc71; /* Verde Sucesso */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.success-icon svg {
+  width: 50px;
+  height: 50px;
+  fill: var(--white);
+}
+.success-modal-content h3 {
+  color: #2ecc71; /* Verde Sucesso */
+}
+/* --- FIM Estilos Modal de Sucesso --- */

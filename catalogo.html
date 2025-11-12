@@ -64,12 +64,15 @@
       <h3>Solicitar Orçamento</h3>
       <p>Preencha os dados abaixo e enviaremos a proposta.</p>
       
-      <div class="info-box">
-        <strong>Como funciona?</strong>
-        <p>Após o envio, seu projeto será avaliado. Em seguida, enviaremos o prazo, o que o site conterá, o contrato e todas as demais informações pelo seu meio de contato.</p>
+     <div class="info-box" style="margin-bottom: 1.5rem;">
+        <strong>Nosso Processo:</strong>
+        <ol style="padding-left: 1.2rem; margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted);">
+          <li>Análise do seu pedido.</li>
+          <li>Contato com a proposta e prazo.</li>
+          <li>Contrato e início do desenvolvimento.</li>
+        </ol>
       </div>
-
-      <form id="form-orcamento-modal" class="form-grid" action="#" method="post" onsubmit="return false;">
+      <form id="form-orcamento-modal" class="form-grid" action="#" method="post">
         <div class="form-group">
           <label for="nome-modal">Nome</label>
           <input id="nome-modal" name="nome" required placeholder="Seu nome completo" />
@@ -91,22 +94,9 @@
           <textarea id="descricao-modal" name="descricao" rows="4" required placeholder="Ex: Quero um site de landing page para..."></textarea>
         </div>
         
-        <div class="form-actions full">
-          <div class="form-actions-split">
-            <button type="submit" class="cta-button" id="sendBudgetModalWpp">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.626-2.957 6.584-6.591 6.584zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.098-.448.098-.133.196-.514.646-.629.774-.114.128-.232.145-.448.049-.214-.098-.921-.332-1.751-1.071-.646-.579-1.08-1.29-1.218-1.506-.137-.215-.01-.331.093-.432.098-.099.221-.242.329-.36a.417.417 0 0 0 .093-.314c0-.131-.448-1.07-.612-1.442-.164-.372-.33-.314-.448-.314a.885.885 0 0 0-.448.123c-.14.116-.481.464-.646.63-.164.167-.329.418-.329.851 0 .432.339.851.768 1.478.43.628.895 1.156 1.776 1.838.47.37.84.598 1.12.798.37.258.736.467 1.059.584.552.201 1.06.176 1.463.107.4-.068 1.17-.48 1.334-.949.166-.469.166-.869.117-.957-.048-.088-.197-.148-.413-.242z"/>
-              </svg>
-              <span>Enviar via WhatsApp</span>
-            </button>
-            <button type="submit" class="cta-outline" id="sendBudgetModalEmail">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
-                <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.22a1 1 0 00.118.05l.841.42a1 1 0 00.201 0l.841-.42a1 1 0 00.118-.05L19 7.16V6a2 2 0 00-2-2H3z"></path>
-                <path d="M19 9.162l-7.841 3.92a1 1 0 01-1.118 0L2 9.162V14a2 2 0 002 2h12a2 2 0 002-2V9.162z"></path>
-              </svg>
-              <span>Enviar via E-mail</span>
-            </button>
-          </div>
+       <div class="form-actions full">
+          <button type="submit" class="cta-button" id="sendBudgetModal">Enviar Pedido</button>
+         <p id="form-message-modal" class="form-message" style="margin-top: 1rem;"></p>
         </div>
       </form>
       </div>
@@ -131,7 +121,31 @@
 
 
 
- <footer class="footer" role="contentinfo">
+ <div id="success-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content success-modal-content">
+      
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      
+      <h3>Pedido Enviado!</h3>
+      <p>Seu pedido foi enviado com sucesso. Logo mais, nossa equipe entrará em contato via WhatsApp ou E-mail.</p>
+      
+      <div class="info-box" style="text-align: left; margin-top: 2rem;">
+        <strong>Processo de Orçamento e Desenvolvimento</strong>
+        <ol style="padding-left: 1.5rem; margin-top: 1rem; font-size: 0.9rem; color: var(--muted);">
+          <li style="margin-bottom: 0.5rem;"><strong>Análise:</strong> Nossa equipe analisará os requisitos e objetivos do seu projeto.</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Proposta:</strong> Entraremos em contato com o orçamento detalhado, o projeto e o prazo.</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Contrato:</strong> Com a aprovação, formalizaremos o contrato.</li>
+          <li><strong>Desenvolvimento:</strong> Iniciaremos a criação do seu projeto.</li>
+        </ol>
+      </div>
+      
+      <button class="cta-button" id="close-success-modal" style="width: 100%; margin-top: 2rem;">Entendido</button>
+    </div>
+  </div>
+  
+  <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-inner">
         <div class="footer-left">
@@ -146,8 +160,8 @@
         </div>
         <div class="footer-social">
           <h4>Siga-nos</h4>
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
+          <a href="https://www.instagram.com/next_layer.agencia">Instagram</a>
+          <a href="https://www.linkedin.com/in/nextlayer-empresarial-655010397">LinkedIn</a>
         </div>
       </div>
       <div class="footer-bottom">

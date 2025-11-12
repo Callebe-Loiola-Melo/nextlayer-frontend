@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
         
     // 1. Definições
-    const API_URL = 'https://nextlayer-backend-production.up.railway.app';
+    // REVERTIDO: Voltamos para o localhost
+    const API_URL = 'http://localhost:3000';
     const catalogoGrid = document.getElementById('catalogo-grid');
     
     // --- Elementos do Modal ---
@@ -22,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitulo.textContent = 'Carregando...';
         modalDescricao.textContent = '...';
         modalImagem.src = '';
-
         modalShowMore.style.display = 'none';
         modalDescricao.classList.remove('expanded');
 
@@ -101,14 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.cursor = 'pointer'; 
                 
                 const imageUrl = `${API_URL}/uploads/${projeto.imagem_url}`;
+                const descCurta = projeto.descricao.substring(0, 60) + '...';
                 
                 card.innerHTML = `
                     <img src="${imageUrl}" alt="${projeto.nome}" />
                     <h3>${projeto.nome}</h3>
                     <p>${projeto.descricao}</p>
-                    
                     <small class="card-show-more-prompt">Clique para ver a descrição completa.</small>
-                    
                     <div class="card-actions">
                         <a class="cta-button" href="criacao.html?modelo=${encodeURIComponent(projeto.nome)}">Personalizar</a>
                         <a class="cta-outline" href="${projeto.demo_url}" target="_blank">Demo</a>

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Next Layer - Dashboard</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="images/icon.png" />
   <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
@@ -22,52 +21,82 @@
     </div>
   </header>
 
+  <nav class="admin-nav">
+    <div class="container">
+      <a href="#projetos" class="admin-nav-link active" data-page="page-projetos">Projetos</a>
+      <a href="#pedidos" class="admin-nav-link" data-page="page-pedidos">Pedidos</a>
+      <a href="#registros" class="admin-nav-link" data-page="page-registros">Registros</a>
+    </div>
+  </nav>
+
   <main class="container page-content">
     
-    <div class="admin-grid">
-      
-      <div class="form-container">
-        <form id="projeto-form" class="admin-form form-grid">
-          
-          <h3 id="form-title">Adicionar Novo Projeto</h3>
-          <input type="hidden" id="projeto-id" name="projetoId">
-          
-          <div class="form-group">
-            <label for="nome">Nome do Projeto</label>
-            <input id="nome" name="nome" required />
+    <section id="page-projetos" class="admin-page active">
+      <div class="admin-grid">
+        <div class="form-container">
+          <form id="projeto-form" class="admin-form form-grid">
+            <h3 id="form-title">Adicionar Novo Projeto</h3>
+            <input type="hidden" id="projeto-id" name="projetoId">
+            <div class="form-group">
+              <label for="nome">Nome do Projeto</label>
+              <input id="nome" name="nome" required />
+            </div>
+            <div class="form-group">
+              <label for="imagem">Imagem (PNG, JPG)</label>
+              <input id="imagem" name="imagem" type="file" />
+            </div>
+            <div class="form-group full">
+              <label for="descricao">Descrição</label>
+              <textarea id="descricao" name="descricao" rows="4" required></textarea>
+            </div>
+            <div class="form-group full">
+              <label for="demo_url">Link de Demonstração (URL)</label>
+              <input id="demo_url" name="demo_url" placeholder="Ex: https://demo.exemplo.com" />
+            </div>
+            <div class="form-actions full">
+              <button type="submit" class="cta-button" id="form-submit-btn">Adicionar Projeto</button>
+              <button type="button" class="cta-outline" id="cancel-edit-btn" style="display: none;">Cancelar Edição</button>
+            </div>
+            <p id="success-message" class="success-message"></p>
+          </form>
+        </div>
+        <div class="list-container">
+          <h2>Projetos Adicionados</h2>
+          <div id="projetos-lista">
+            <p>Carregando projetos...</p>
           </div>
-          
-          <div class="form-group">
-            <label for="imagem">Imagem (PNG, JPG)</label>
-            <input id="imagem" name="imagem" type="file" />
-          </div>
-
-          <div class="form-group full">
-            <label for="descricao">Descrição</label>
-            <textarea id="descricao" name="descricao" rows="4" required></textarea>
-          </div>
-          
-          <div class="form-group full">
-            <label for="demo_url">Link de Demonstração (URL)</label>
-            <input id="demo_url" name="demo_url" placeholder="Ex: https://demo.exemplo.com" />
-          </div>
-          
-          <div class="form-actions full">
-            <button type="submit" class="cta-button" id="form-submit-btn">Adicionar Projeto</button>
-            <button type="button" class="cta-outline" id="cancel-edit-btn" style="display: none;">Cancelar Edição</button>
-          </div>
-          <p id="success-message" class="success-message"></p>
-        </form>
-      </div>
-
-      <div class="list-container">
-        <h2>Projetos Adicionados</h2>
-        <div id="projetos-lista">
-          <p>Carregando projetos...</p>
         </div>
       </div>
+    </section>
 
-    </div> </main>
+    <section id="page-pedidos" class="admin-page" style="display: none;">
+      <h2>Pedidos de Orçamento</h2>
+      <p class="lead" style="font-size: 1.1rem; margin-bottom: 2rem;">Pedidos de clientes que preencheram o formulário no site.</p>
+      <div id="pedidos-lista" class="admin-list-container">
+        <p>Carregando pedidos...</p>
+      </div>
+    </section>
+
+    <section id="page-registros" class="admin-page" style="display: none;">
+      <h2>Registros de Atendimento</h2>
+      <p class="lead" style="font-size: 1.1rem; margin-bottom: 2rem;">Histórico de todos os pedidos marcados como "Finalizado".</p>
+      <div id="registros-lista" class="admin-list-container">
+        <p>Carregando registros...</p>
+      </div>
+    </section>
+
+  </main>
+  
+  <div id="details-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content details-modal-content">
+      <button class="modal-close" id="close-details-modal" aria-label="Fechar janela">×</button>
+      
+      <div id="details-modal-body">
+        <p>Carregando detalhes...</p>
+      </div>
+      
+    </div>
+  </div>
   
   <script src="admin.js"></script>
 </body>
