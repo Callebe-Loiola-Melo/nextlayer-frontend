@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
  
-  const API_URL = 'http://localhost:3000'; 
+  const API_URL = 'nextlayer-backend-production-c450.up.railway.app'; 
   const EMAIL_DESTINO = 'nextlayerempresarial@gmail.com';
 
   const anos = document.querySelectorAll('#ano, #ano2, #ano3, #ano4');
