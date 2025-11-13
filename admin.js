@@ -2,7 +2,7 @@
 // --- ADMIN.JS v3.1 (Com correção do closeModal) ---
 // =============================================================
 
-const API_URL = 'nextlayer-backend-production-c450.up.railway.app';
+const API_URL = 'https://nextlayer-backend-production-c450.up.railway.app';
 
 // ===============================================
 // --- LÓGICA DE LOGIN (Sem alteração) ---

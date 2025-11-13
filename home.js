@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
         
     // REVERTIDO: Voltamos para o localhost
-    const API_URL = 'nextlayer-backend-production-c450.up.railway.app';
+    const API_URL = 'https://nextlayer-backend-production-c450.up.railway.app';
     const recentesGrid = document.getElementById('recentes-grid'); 
     
     async function carregarProjetosRecentes() {

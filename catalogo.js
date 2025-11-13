@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
     // 1. Definições
     // REVERTIDO: Voltamos para o localhost
-    const API_URL = 'nextlayer-backend-production-c450.up.railway.app';
+    const API_URL = 'https://nextlayer-backend-production-c450.up.railway.app';
     const catalogoGrid = document.getElementById('catalogo-grid');
     
     // --- Elementos do Modal ---
