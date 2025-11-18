@@ -2,7 +2,7 @@
 // --- ADMIN.JS v3.1 (Com correção do closeModal) ---
 // =============================================================
 
-const API_URL = 'https://nextlayer-backend-vzle.vercel.app';
+const API_URL = 'http://localhost:3000';
 
 // ===============================================
 // --- LÓGICA DE LOGIN (Sem alteração) ---

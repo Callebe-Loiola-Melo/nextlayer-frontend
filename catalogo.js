@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
     // 1. Definições
     // REVERTIDO: Voltamos para o localhost
-    const API_URL = 'https://nextlayer-backend-vzle.vercel.app';
+    const API_URL = 'http://localhost:3000';
     const catalogoGrid = document.getElementById('catalogo-grid');
     
     // --- Elementos do Modal ---

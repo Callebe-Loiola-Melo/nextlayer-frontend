@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
  
-  const API_URL = 'https://nextlayer-backend-vzle.vercel.app'; 
+  const API_URL = 'http://localhost:3000';
   const EMAIL_DESTINO = 'nextlayerempresarial@gmail.com';
 
   const anos = document.querySelectorAll('#ano, #ano2, #ano3, #ano4');
