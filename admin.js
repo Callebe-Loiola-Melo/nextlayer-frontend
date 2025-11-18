@@ -2,8 +2,7 @@
 // --- ADMIN.JS v3.1 (Com correção do closeModal) ---
 // =============================================================
 
-const API_URL = 'http://localhost:3000';
-
+const API_URL = 'https://nextlayerbackend.netlify.app';
 // ===============================================
 // --- LÓGICA DE LOGIN (Sem alteração) ---
 // ===============================================

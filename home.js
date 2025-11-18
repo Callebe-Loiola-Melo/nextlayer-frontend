@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
         
     // REVERTIDO: Voltamos para o localhost
-    const API_URL = 'http://localhost:3000';
+    const API_URL = 'https://nextlayerbackend.netlify.app';
     const recentesGrid = document.getElementById('recentes-grid'); 
     
     async function carregarProjetosRecentes() {

@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
     // 1. Definições
     // REVERTIDO: Voltamos para o localhost
-    const API_URL = 'http://localhost:3000';
+    const API_URL = 'https://nextlayerbackend.netlify.app';
     const catalogoGrid = document.getElementById('catalogo-grid');
     
     // --- Elementos do Modal ---
