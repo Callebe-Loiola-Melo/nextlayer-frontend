@@ -1,10 +1,12 @@
 // =============================================================
-// --- ADMIN.JS v3.1 (Com correção do closeModal) ---
+// --- ADMIN.JS (Atualizado para Supabase Images) ---
 // =============================================================
 
+// URL do seu Back-end no Netlify
 const API_URL = 'https://nextlayerbackend.netlify.app';
+
 // ===============================================
-// --- LÓGICA DE LOGIN (Sem alteração) ---
+// --- LÓGICA DE LOGIN ---
 // ===============================================
 
 const loginForm = document.getElementById('login-form');
@@ -15,6 +17,7 @@ if (loginForm) {
     const senha = document.getElementById('senha').value;
     const errorMessage = document.getElementById('error-message');
     try {
+      // Correção: Adicionado /api no endpoint
       const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,12 +57,9 @@ if (!loginForm) {
     return headers;
   };
 
-  // --- FUNÇÃO ADICIONADA (O conserto do bug) ---
   function closeModal(modalElement) {
     if (modalElement) modalElement.classList.remove('active');
   }
-  // --- FIM DA FUNÇÃO ADICIONADA ---
-
 
   // --- Lógica de Logout ---
   const logoutButton = document.getElementById('logout-button');
@@ -110,10 +110,15 @@ if (!loginForm) {
         return;
       }
       projetos.forEach(projeto => {
+        // --- CORREÇÃO DA IMAGEM (NA LISTA DO ADMIN) ---
+        const imgSrc = projeto.imagem_url.startsWith('http') 
+            ? projeto.imagem_url 
+            : `${API_URL}/uploads/${projeto.imagem_url}`;
+
         const el = document.createElement('div');
         el.className = 'projeto-item';
         el.innerHTML = `
-          <img src="${API_URL}/uploads/${projeto.imagem_url}" alt="${projeto.nome}">
+          <img src="${imgSrc}" alt="${projeto.nome}">
           <div class="projeto-item-info"><h4>${projeto.nome}</h4><p>${projeto.descricao.substring(0, 50)}...</p></div>
           <div class="projeto-item-actions">
             <button class="action-btn edit-btn" data-id="${projeto.id}">Editar</button>
@@ -124,6 +129,7 @@ if (!loginForm) {
       });
     } catch (err) { projetosListaDiv.innerHTML = '<p style="color: #ff6b6b;">Erro ao carregar projetos.</p>'; }
   }
+
   async function handleProjetoFormSubmit(e) {
     e.preventDefault();
     const id = projetoIdInput.value;
@@ -131,21 +137,30 @@ if (!loginForm) {
     const formData = new FormData(projetoForm);
     const url = isEditing ? `${API_URL}/api/projetos/${id}` : `${API_URL}/api/projetos`;
     const method = isEditing ? 'PUT' : 'POST';
+    
     try {
-      const response = await fetch(url, { method: method, headers: { 'Authorization': `Bearer ${getToken()}` }, body: formData });
+      // Enviar form-data exige headers sem Content-Type (o browser define)
+      const response = await fetch(url, { 
+          method: method, 
+          headers: { 'Authorization': `Bearer ${getToken()}` }, 
+          body: formData 
+      });
+      
       if (!response.ok) throw new Error('Erro ao salvar.');
       const data = await response.json();
       showSuccessMessage(data.message);
       resetForm();
       fetchAndDisplayProjetos();
-    } catch (err) { alert('Erro ao salvar projeto.'); }
+    } catch (err) { alert('Erro ao salvar projeto. Verifique se a imagem é válida.'); }
   }
+
   async function deleteProjeto(id) {
     try {
       await fetch(`${API_URL}/api/projetos/${id}`, { method: 'DELETE', headers: getAuthHeaders(null) });
       fetchAndDisplayProjetos();
     } catch (err) { alert('Erro ao apagar projeto.'); }
   }
+
   function prepareEditForm(itemElement, id) {
     const nome = itemElement.querySelector('h4').textContent;
     const descricao = itemElement.querySelector('p').textContent.replace('...', '');
@@ -158,6 +173,7 @@ if (!loginForm) {
     cancelEditBtn.style.display = 'block';
     window.scrollTo(0, 0);
   }
+
   function resetForm() {
     projetoForm.reset(); 
     projetoIdInput.value = ''; 
@@ -165,11 +181,13 @@ if (!loginForm) {
     formSubmitBtn.textContent = 'Adicionar Projeto';
     cancelEditBtn.style.display = 'none';
   }
+
   function showSuccessMessage(message) {
     successMessage.textContent = message;
     successMessage.style.display = 'block';
     setTimeout(() => { successMessage.style.display = 'none'; }, 3000);
   }
+
   // Listeners da página Projetos
   projetoForm.addEventListener('submit', handleProjetoFormSubmit);
   cancelEditBtn.addEventListener('click', resetForm);
@@ -399,21 +417,16 @@ if (!loginForm) {
       });
       
       alert('Dev salvo com sucesso!');
-      
-      // MUDANÇA: Agora o closeModal(detailsModal) vai funcionar!
       closeModal(detailsModal); 
       
     } catch (err) {
-      // O "erro" falso não deve mais acontecer
       alert('Erro ao salvar o dev.');
     }
   }
 
-  // Listener para FECHAR O MODAL DE DETALHES
   closeDetailsModalBtn.addEventListener('click', () => closeModal(detailsModal));
 
+  // Inicialização
+  fetchAndDisplayProjetos(); 
 
-  // --- Inicialização ---
-  fetchAndDisplayProjetos(); // Carrega a aba padrão
-
-} // Fim do if (!loginForm)
+}

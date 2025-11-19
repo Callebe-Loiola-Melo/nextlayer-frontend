@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
         
-    // 1. Definições
-    // REVERTIDO: Voltamos para o localhost
+    // URL do seu Back-end no Netlify
     const API_URL = 'https://nextlayerbackend.netlify.app';
     const catalogoGrid = document.getElementById('catalogo-grid');
     
@@ -32,7 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const projeto = await response.json();
 
-            modalImagem.src = `${API_URL}/uploads/${projeto.imagem_url}`;
+            // --- CORREÇÃO DA IMAGEM (NO MODAL) ---
+            modalImagem.src = projeto.imagem_url.startsWith('http')
+                ? projeto.imagem_url
+                : `${API_URL}/uploads/${projeto.imagem_url}`;
+
             modalImagem.alt = projeto.nome;
             modalTitulo.textContent = projeto.nome;
             modalDescricao.textContent = projeto.descricao;
@@ -100,7 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.dataset.id = projeto.id;
                 card.style.cursor = 'pointer'; 
                 
-                const imageUrl = `${API_URL}/uploads/${projeto.imagem_url}`;
+                // --- CORREÇÃO DA IMAGEM (NO CARD) ---
+                const imageUrl = projeto.imagem_url.startsWith('http')
+                    ? projeto.imagem_url
+                    : `${API_URL}/uploads/${projeto.imagem_url}`;
+
                 const descCurta = projeto.descricao.substring(0, 60) + '...';
                 
                 card.innerHTML = `
@@ -133,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Erro ao carregar projetos:', error);
-            catalogoGrid.innerHTML = '<p style="color: #ff6b6b;">Não foi possível carregar os projetos. O servidor backend está ligado?</p>';
+            catalogoGrid.innerHTML = '<p style="color: #ff6b6b;">Não foi possível carregar os projetos.</p>';
         }
     }
 

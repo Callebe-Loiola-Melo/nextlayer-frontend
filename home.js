@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
         
-    // REVERTIDO: Voltamos para o localhost
+    // URL do seu Back-end no Netlify
     const API_URL = 'https://nextlayerbackend.netlify.app';
     const recentesGrid = document.getElementById('recentes-grid'); 
     
@@ -24,7 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             projetos.forEach(projeto => {
-                const imageUrl = `${API_URL}/uploads/${projeto.imagem_url}`;
+                // --- CORREÇÃO DA IMAGEM ---
+                // Se o link já começar com "http", usa ele direto (Supabase).
+                // Se não, usa o caminho antigo.
+                const imageUrl = projeto.imagem_url.startsWith('http') 
+                    ? projeto.imagem_url 
+                    : `${API_URL}/uploads/${projeto.imagem_url}`;
                 
                 const cardHTML = `
                     <a href="catalogo.html?projeto=${projeto.id}" style="text-decoration: none;">
@@ -40,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Erro ao carregar projetos recentes:', error);
-            recentesGrid.innerHTML = '<p style="color: #ff6b6b; grid-column: 1 / -1;">Não foi possível carregar os projetos. O backend está ligado?</p>';
+            recentesGrid.innerHTML = '<p style="color: #ff6b6b; grid-column: 1 / -1;">Não foi possível carregar os projetos.</p>';
         }
     }
 
-    // 4. Chamar a função
+    // Chamar a função
     carregarProjetosRecentes();
 });
